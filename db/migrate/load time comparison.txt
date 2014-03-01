@@ -1,0 +1,8 @@
+with index on total_karma_points (and user_id on karma_points)
+Rendered users/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 41ms (Views: 39.0ms | ActiveRecord: 1.5ms)
+
+without index on total_karma_points (and user_id on karma_points)
+Rendered users/index.html.erb within layouts/application (59.9ms)
+Completed 200 OK in 72ms (Views: 39.2ms | ActiveRecord: 32.8ms)
+
