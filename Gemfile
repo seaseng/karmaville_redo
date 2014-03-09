@@ -8,7 +8,6 @@ gem 'bcrypt-ruby'
 gem 'pg'
 gem 'jquery-rails'
 
-gem 'htmlentities'
 
 group :development do
   gem 'quiet_assets'
