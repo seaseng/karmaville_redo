@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
+  
   def index
-    @users = User.by_karma.limit(50)
+    @page = params[:page].presence
+    # @coder = HTMLEntities.new
+    if @page
+      @users = User.by_karma.page(@page.to_i)
+      # binding.pry
+    else
+      @users = User.by_karma.page(1)
+    end
   end
 end

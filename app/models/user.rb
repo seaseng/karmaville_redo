@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
             :format => {:with => /^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/i},
             :uniqueness => {:case_sensitive => false}
 
+  PER_PAGE = 1000
 
   def self.by_karma
     # joins(:karma_points).group('users.id').order('SUM(karma_points.value) DESC')
@@ -35,6 +36,10 @@ class User < ActiveRecord::Base
   def update_total_karma
     self.total_karma_points = karma_points.sum(:value)
     save!
+  end
+
+  def self.page(page)
+    offset(PER_PAGE*(page-1)).limit(PER_PAGE)
   end
 
 end

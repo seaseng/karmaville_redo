@@ -1,3 +1,4 @@
+<% total_page = User.count/User::PER_PAGE %>
 <h1>KarmaVille's Most Famous</h1>
 <table class="table table-bordered table-striped">
   <tr>
@@ -10,3 +11,12 @@
     <%= render 'user_row', :user => user %>
   <% end %>
 </table>
+<div class="pagination">
+  <ul>
+    <li><%= link_to raw("&laquo;"), root_path(page: @page.to_i - 1) if @page.to_i > 1 %></li>
+    <% 1.upto(total_page) do |i| %>
+      <li class= <%= 'active' if i == @page.to_i %> ><%= link_to i, root_path(page: i)%></li>
+    <% end %>
+    <li><%= link_to raw("&raquo;"), root_path(page: @page.to_i + 1) if @page.to_i < total_page %></li>
+  </ul>
+</div>
