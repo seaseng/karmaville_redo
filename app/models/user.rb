@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def self.page(page)
+  def self.page(page = 1)
     offset(PER_PAGE*(page-1)).limit(PER_PAGE)
   end
 
